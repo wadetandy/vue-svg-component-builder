@@ -1,6 +1,6 @@
 {
   "name": "vue-svg-component-builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Factory function for creating Vue components for SVG images",
   "main": "lib/index.js",
   "module": "lib-esm/index.js",
