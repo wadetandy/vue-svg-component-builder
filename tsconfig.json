@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "moduleResolution": "node",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2015", "dom"],
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": false,
+    "strict": true,
+    "sourceMap": false,
+    "declaration": true,
+    "inlineSourceMap": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.test.ts",
+    "types/**/*.d.ts"
+  ]
+}
