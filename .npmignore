@@ -3,3 +3,4 @@ test/
 test/
 tsconfig*
 yarn.lock
+yarn-error.log
