@@ -3,5 +3,9 @@
   "compilerOptions": {
     "module": "esnext",
     "outDir": "lib-esm/"
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "types/**/*.d.ts"
+  ]
 }

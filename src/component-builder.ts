@@ -1,5 +1,5 @@
 import Vue, { VueConstructor, CreateElement, VNode, ComponentOptions, PropOptions } from 'vue'
-import { ASTElement, ASTNode } from 'vue-template-compiler'
+import { MinifedASTElement, MinifiedASTNode, isElementNode } from './utils';
 
 export interface IDimensions {
   height: number,
@@ -12,11 +12,7 @@ export interface IComponent extends Vue {
   dimension: IDimensions
 }
 
-const isElementNode = (node : ASTNode) : node is ASTElement => {
-  return node.hasOwnProperty('children')
-}
-
-function renderASTNode(h: CreateElement, ast: ASTNode) : VNode | string {
+function renderASTNode(h: CreateElement, ast: MinifiedASTNode) : VNode | string {
   if (isElementNode(ast)) {
     let children = ast.children.map(child => renderASTNode(h, child))
 
@@ -32,8 +28,8 @@ function renderASTNode(h: CreateElement, ast: ASTNode) : VNode | string {
   }
 }
 
-export const build = (svg : ASTElement) => {
-  let component : ComponentOptions<Vue> = {
+export const build = (svg : MinifedASTElement) : ComponentOptions<Vue> => {
+  let component = {
     props: {
       scale: {
         type: [Number, Boolean],
@@ -79,7 +75,7 @@ export const build = (svg : ASTElement) => {
         },
         [
           this.$slots.default,
-          ...svg.children.map(c => renderASTNode(h, c))
+          ...svg.children.map((c) => renderASTNode(h, c))
         ]
       )
     },

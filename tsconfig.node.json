@@ -3,5 +3,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "lib/"
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "types/**/*.d.ts"
+  ]
 }
