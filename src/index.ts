@@ -2,6 +2,23 @@ import { minifyAst } from './utils'
 import { compile } from 'vue-template-compiler'
 
 export function buildComponent(code : string) {
+  return `
+    var runtime = require('vue-svg-component-runtime')
+    module.exports = {
+      __esModule: true,
+      default: runtime.svgComponent(${JSON.stringify(compileAndMinify(code), null, 2)})
+    }
+  `
+}
+
+export function buildEsmComponent(code : string) {
+  return `
+    import { svgComponent } from 'vue-svg-component-runtime'
+    export default svgComponent(${JSON.stringify(compileAndMinify(code), null, 2)})
+  `
+}
+
+function compileAndMinify(code: string) {
   const compiledSvg = compile(code)
   if (compiledSvg.ast === undefined) {
     let errorMsg = 'Unknown Error'
@@ -13,13 +30,5 @@ export function buildComponent(code : string) {
     throw new Error(`There were one or more problems building the AST for the requested SVG: ${errorMsg}`)
   }
 
-  const ast = minifyAst(compiledSvg.ast)
-
-  return `
-    var runtime = require('vue-svg-component-runtime')
-    module.exports = {
-      __esModule: true,
-      default: runtime.svgComponent(${JSON.stringify(ast, null, 2)})
-    }
-  `
+  return minifyAst(compiledSvg.ast)
 }
