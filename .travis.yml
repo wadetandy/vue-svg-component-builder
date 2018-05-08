@@ -15,4 +15,4 @@ deploy:
   on:
     tags: true
     node: node # Only publish with latest node version
-    repo: wadetandy/vue-svg-component-build
+    repo: wadetandy/vue-svg-component-builder
