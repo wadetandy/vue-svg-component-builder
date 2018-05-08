@@ -1,5 +1,9 @@
 lib/
 lib-esm/
+src/
+test/
 node_modules/
 yarn.lock
 yarn-error.log
+tsconfig*
+.travis.yml
