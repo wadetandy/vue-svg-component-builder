@@ -1,8 +1,5 @@
 import { expect } from '../test-helper'
-import { spy, assert as sinonAssert } from 'sinon'
-import { minifyAst, recursiveMinify } from '../../src/utils'
-import { MinifedASTElement, MinifiedASTNode, MinifiedASTText } from 'vue-svg-component-runtime'
-import { mount } from 'vue-test-utils'
+import { recursiveMinify } from '../../src/utils'
 
 describe('recursiveMinify', () => {
   context('when the node is a text node', () => {

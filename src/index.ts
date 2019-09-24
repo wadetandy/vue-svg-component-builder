@@ -18,7 +18,7 @@ export function buildEsmComponent(code : string) {
   `
 }
 
-function compileAndMinify(code: string) {
+export function compileAndMinify(code: string) {
   const compiledSvg = compile(code)
   if (compiledSvg.ast === undefined) {
     let errorMsg = 'Unknown Error'
